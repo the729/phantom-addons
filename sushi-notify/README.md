@@ -9,7 +9,7 @@
 ## 安装方法
 
 - 在MySQL中建立数据库，导入phantom_sushi_notify.sql建立数据库结构
-- 修改inc/conf.template.php，需要修改如下：
+- 修改inc/conf.template.php，并保存为inc/conf.php，需要修改如下：
     - 数据库用户名密码
     - 数据库名称（如果没有用默认的话）
     - App ID和App Secret

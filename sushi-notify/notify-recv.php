@@ -21,7 +21,7 @@ if (! $pheanstalk->getConnection()->isServiceListening()) {
 }
 $pheanstalk->useTube('sushi-notify');
 
-if ( 0 === strpos($jdata->type, 'DoorSensorsChanged-v1')) {
+if ( 0 === strpos($jdata->type, 'DoorSensorsChanged-v2')) {
     // Door sensor notification
     $pheanstalk->put($data);
 }

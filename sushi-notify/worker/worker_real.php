@@ -40,7 +40,7 @@ while (time() - $startTime < MAX_WORKER_LIFE_TIME) {
     log_write("[DD] Get task: $task");
     
     $task = json_decode($task);
-    if ( 0 === strpos($task->type, 'DoorSensorsChanged-v1')) {
+    if ( 0 === strpos($task->type, 'DoorSensorsChanged-v2')) {
         parse_sushi_notify($task);
     } elseif ( 0 === strpos($task->type, 'DoorTimeout')) {
         parse_door_timeout($task);

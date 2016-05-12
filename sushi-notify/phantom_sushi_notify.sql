@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 01, 2016 at 06:56 AM
+-- Generation Time: May 11, 2016 at 12:28 AM
 -- Server version: 5.5.49-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.16
 
@@ -66,6 +66,19 @@ CREATE TABLE IF NOT EXISTS `phantom_user` (
   `refresh_token` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`phantom_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sushi_update_time`
+--
+
+CREATE TABLE IF NOT EXISTS `sushi_update_time` (
+  `phantom_user_id` int(11) NOT NULL,
+  `sushi_id` int(11) NOT NULL,
+  `update_event_time` bigint(20) NOT NULL,
+  PRIMARY KEY (`phantom_user_id`,`sushi_id`)
+) ENGINE=MEMORY DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

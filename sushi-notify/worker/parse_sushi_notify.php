@@ -2,11 +2,22 @@
 require_once(__DIR__ . "/../inc/util.php");
 require_once(__DIR__ . "/../inc/scheme.class.php");
 require_once(__DIR__ . "/../inc/task.class.php");
+require_once(__DIR__ . "/../inc/sushi.class.php");
 
 function parse_sushi_notify($task) {
     $user_id = intval(substr($task->type, strrpos($task->type, "-")+1));
     
     $event = $task->content;
+    
+    $last_event_timestamp = 0;
+    foreach ($event->behaviors as $evt) {
+        if ($evt->timestamp > $last_event_timestamp)
+            $last_event_timestamp = $evt->timestamp;
+    }
+    if ($last_event_timestamp == 0) return;
+    
+    $is_new = Sushi::update_event($event->door_sensor_id, $user_id, $last_event_timestamp);
+    if ( !$is_new ) return;
     
     if ($event->is_open) {
         # door opened
